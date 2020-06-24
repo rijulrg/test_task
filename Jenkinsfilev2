@@ -3,6 +3,7 @@ node {
         def myTestContainer = docker.image('node:8')
         myTestContainer.pull()
         myTestContainer.inside {
+            sh 'ls -ltrh'
             sh 'npm install'
             sh 'npm start'
             }
