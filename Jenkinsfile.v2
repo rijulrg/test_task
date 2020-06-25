@@ -16,7 +16,7 @@ node {
     stage('sonar-scanner') {
         def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
         withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
-            sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=test_app -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.language=nodejs"
+            sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=test_app -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.language=nodejs -Dsonar.projectKey=RG"
             }
         }
     stage('docker build/push') {
