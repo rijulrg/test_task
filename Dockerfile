@@ -4,11 +4,11 @@ FROM node:8
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY app/package*.json ./
+COPY package*.json ./
 RUN npm install
 
 # Copy app file 
-COPY app/ .
+COPY . /usr/src/app
 
 # Exposing ports
 EXPOSE 3000
