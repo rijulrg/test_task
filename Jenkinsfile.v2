@@ -9,7 +9,7 @@ node {
         def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
         def node_path = tool name: 'nodejs', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation' 
         withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
-            sh "${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=test_app -Dsonar.nodejs.executable=${node_path} -Dsonar.projectKey=RG"
+            sh "${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=test_app -Dsonar.nodejs.executable=${node_path}/bin/node -Dsonar.projectKey=RG"
             }
         }
     stage('test') {
